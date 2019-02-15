@@ -38,6 +38,7 @@ const styles = theme => ({
       easing: theme.transitions.easing.sharp,
       duration: theme.transitions.duration.leavingScreen,
     }),
+    backgroundColor: "#006244"
   },
   appBarShift: {
     marginLeft: drawerWidth,
@@ -136,10 +137,16 @@ const styles = theme => ({
   },
 });
 
+const iconColor = "#006244";
+
 class HeaderSideBar extends React.Component {
-  state = {
-    open: false,
-  };
+    constructor(props)
+    {
+      super(props); 
+      this.state = {
+        open: false,
+      };
+    }
 
   handleDrawerOpen = () => {
     this.setState({ open: true });
@@ -155,7 +162,7 @@ class HeaderSideBar extends React.Component {
     return (
       <div className={classes.root}>
         <CssBaseline />
-        <AppBar
+        <AppBar 
           position="fixed"
           className={classNames(classes.appBar, {
             [classes.appBarShift]: this.state.open,
@@ -173,7 +180,7 @@ class HeaderSideBar extends React.Component {
               <MenuIcon />
             </IconButton>
             <Typography className={classes.title} variant="h6" color="inherit" noWrap>
-            Material-UI
+            Pricing Manager
             </Typography>
             <div className={classes.grow} />
             <div className={classes.search}>
@@ -215,7 +222,7 @@ class HeaderSideBar extends React.Component {
               <ListItem button key={text}>
                 <ListItemIcon><HomeIcon
                     className={classes.icon}
-                    color="primary"
+                    color= {iconColor}
                 /></ListItemIcon>
                 <ListItemText primary={text} />
               </ListItem>
@@ -224,7 +231,7 @@ class HeaderSideBar extends React.Component {
               <ListItem button key={text}>
                 <ListItemIcon><MoneyIcon  
                     className={classes.icon}
-                    color="primary"
+                    color=  {iconColor}
                 /></ListItemIcon>
                 <ListItemText primary={text} />
               </ListItem>
@@ -233,7 +240,7 @@ class HeaderSideBar extends React.Component {
               <ListItem button key={text}>
                 <ListItemIcon><PersonIcon  
                     className={classes.icon}
-                    color="primary"
+                    color=  {iconColor}
                 /></ListItemIcon>
                 <ListItemText primary={text} />
               </ListItem>

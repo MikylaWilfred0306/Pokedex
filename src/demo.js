@@ -3,6 +3,9 @@ import { withStyles } from '@material-ui/core/styles';
 import CssBaseline from '@material-ui/core/CssBaseline';
 import Typography from '@material-ui/core/Typography';
 import HeaderSideBar from './sidebar.js';
+import EnhancedTableHead from './table.js';
+import './App.css'
+
 
 const styles = theme => ({
   root: {
@@ -16,7 +19,7 @@ const styles = theme => ({
 
 class FrontPage extends React.Component {
   render() {
-    const { classes, theme } = this.props;
+    const { classes } = this.props;
 
     return (
       <div className={classes.root}>
@@ -29,8 +32,11 @@ class FrontPage extends React.Component {
           <br></br>
           <br></br>
           <br></br>
-            Pricing Manager
           </Typography>
+
+        <EnhancedTableHead />
+
+
         </main>
       </div>
     );
