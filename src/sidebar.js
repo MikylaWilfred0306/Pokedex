@@ -38,7 +38,7 @@ const styles = theme => ({
       easing: theme.transitions.easing.sharp,
       duration: theme.transitions.duration.leavingScreen,
     }),
-    backgroundColor: "#006244"
+    backgroundColor: "#FF0000"
   },
   appBarShift: {
     marginLeft: drawerWidth,
@@ -137,7 +137,7 @@ const styles = theme => ({
   },
 });
 
-const iconColor = "#006244";
+const iconColor = "error";
 
 class HeaderSideBar extends React.Component {
     constructor(props)
@@ -180,7 +180,7 @@ class HeaderSideBar extends React.Component {
               <MenuIcon />
             </IconButton>
             <Typography className={classes.title} variant="h6" color="inherit" noWrap>
-            Pricing Manager
+            Pokemon Reference via API
             </Typography>
             <div className={classes.grow} />
             <div className={classes.search}>

@@ -4,6 +4,8 @@ import CssBaseline from '@material-ui/core/CssBaseline';
 import Typography from '@material-ui/core/Typography';
 import HeaderSideBar from './sidebar.js';
 import EnhancedTableHead from './table.js';
+import LabelBottomNavigation from './footer.js'; 
+import FooterText from './footer-ext.js'; 
 import './App.css'
 
 
@@ -27,7 +29,7 @@ class FrontPage extends React.Component {
 
         <HeaderSideBar />
 
-        <main className={classes.content}>
+        <main className={classes.content}>]
           <Typography paragraph>
           <br></br>
           <br></br>
@@ -35,8 +37,7 @@ class FrontPage extends React.Component {
           </Typography>
 
         <EnhancedTableHead />
-
-
+        <FooterText/>
         </main>
       </div>
     );

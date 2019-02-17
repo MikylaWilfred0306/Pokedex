@@ -2,7 +2,13 @@
   "name": "devextreme-react-grid-for-material-ui",
   "version": "1.0.0",
   "description": null,
-  "keywords": ["react", "data", "material-design", "grid", "table"],
+  "keywords": [
+    "react",
+    "data",
+    "material-design",
+    "grid",
+    "table"
+  ],
   "homepage": "https://codesandbox.io/s/13qvz1qqzl",
   "main": "index.js",
   "dependencies": {
