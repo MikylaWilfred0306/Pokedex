@@ -3,11 +3,12 @@ import { withStyles } from '@material-ui/core/styles';
 import CssBaseline from '@material-ui/core/CssBaseline';
 import Typography from '@material-ui/core/Typography';
 import HeaderSideBar from './sidebar.js';
-import EnhancedTableHead from './table.js';
-import LabelBottomNavigation from './footer.js'; 
+import API from './API.js';
+import TitlebarGridList from './gridtable.js';
+
 import FooterText from './footer-ext.js'; 
 import './App.css'
-
+//https://img.pokemondb.net/artwork/bulbasaur.jpg
 
 const styles = theme => ({
   root: {
@@ -36,7 +37,8 @@ class FrontPage extends React.Component {
           <br></br>
           </Typography>
 
-        <EnhancedTableHead />
+        <API />
+        <TitlebarGridList/>
         <FooterText/>
         </main>
       </div>
