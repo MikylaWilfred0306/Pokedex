@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
-import EnhancedTableHead, {createDataArr} from './table.js';
 import {jsUcfirst} from './usefulfunctions.js';
 import { withStyles } from '@material-ui/core/styles';
+import TitlebarGridList from './gridtable.js';
 
 
 const styles = theme => ({
@@ -13,10 +13,22 @@ class API extends Component {
         this.state = {
             testers: [], 
             loading: true,
-            columns: ["name", "url"],
-            dcolumns: ["Pokemon Name", "API Url"]
         };
     }
+
+
+    /*
+        const tileData = [
+        *   {
+        *     img: image,
+        *     title: 'Image',
+        *     author: 'author',
+        *   },
+        *   {
+        *     [etc...]
+        *   },
+        * ];
+    */
 
     componentDidMount() {
         fetch('https://pokeapi.co/api/v2/pokemon?limit=100')
@@ -24,8 +36,16 @@ class API extends Component {
                 )
                 .then(data => {
                 data.results.map((html) => {
-                   let arr = [jsUcfirst(html.name),html.url];
-                   this.state.testers.push(createDataArr(this.state.columns, arr));
+                    let obj = {}; 
+                    let url = 'https://img.pokemondb.net/artwork/' + html.name + '.jpg';
+                    let img = {img: url};
+                    let title = {title: jsUcfirst(html.name)};
+                    let author = {author: 'Pokemon'};
+                    Object.assign(obj, img);
+                    Object.assign(obj, title);
+                    Object.assign(obj, author);
+                   this.state.testers.push(obj);
+
                 })       
             this.setState({ loading: false})
             })
@@ -40,7 +60,7 @@ class API extends Component {
     } 
     return (
         <div >
-            <EnhancedTableHead data={this.state.testers} columns={this.state.columns} displayColumns={this.state.dcolumns} />
+             <TitlebarGridList dataArr={this.state.testers} />
         </div>
       );
   }

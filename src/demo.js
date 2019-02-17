@@ -4,10 +4,10 @@ import CssBaseline from '@material-ui/core/CssBaseline';
 import Typography from '@material-ui/core/Typography';
 import HeaderSideBar from './sidebar.js';
 import API from './API.js';
-import TitlebarGridList from './gridtable.js';
 
 import FooterText from './footer-ext.js'; 
 import './App.css'
+import API_Grid from './API_Grid.js';
 //https://img.pokemondb.net/artwork/bulbasaur.jpg
 
 const styles = theme => ({
@@ -38,7 +38,12 @@ class FrontPage extends React.Component {
           </Typography>
 
         <API />
-        <TitlebarGridList/>
+        <Typography paragraph>
+          <br></br>
+          <br></br>
+          <br></br>
+          </Typography>
+        <API_Grid />
         <FooterText/>
         </main>
       </div>
