@@ -2,7 +2,8 @@ import React from "react";
 import PropTypes from 'prop-types';
 import Typography from '@material-ui/core/Typography';
 import DraggableTable from "./DraggableTable";
-import {isEmpty} from './usefulfunctions.js';
+import './StyleSheets/buyRatesLoader.css'
+import {isEmpty} from './Functions/usefulfunctions.js';
 
 let counter = 0;
 export function createDataArr(columns, arr) {
@@ -20,6 +21,15 @@ export function createDataArr(columns, arr) {
     return obj;
 }
 
+const getColumnWidth = (rows, accessor, headerText) => {
+  const maxWidth = 400
+  const magicSpacing = 10
+  const cellLength = Math.max(
+    ...rows.map(row => (`${row[accessor]}` || '').length),
+    headerText.length,
+  )
+  return Math.min(maxWidth, cellLength * magicSpacing)
+}
 
 class EnhancedTableHead extends React.Component {
   constructor(props) {
@@ -43,7 +53,8 @@ columndata(){
     }
      columns.push({
           Header: displayColumns,
-          accessor: this.props.columns[i]
+          accessor: this.props.columns[i],
+          width: getColumnWidth(this.props.data, this.props.columns[i], displayColumns)
       });
   };
   return columns;
@@ -58,10 +69,9 @@ render(){
     
     return (
       <div>
-        
-        <Typography paragraph style={{ textAlign: "center" }}>
+        <div class="outer"><Typography paragraph>
           Tip: Hold shift when sorting to multi-sort!
-        </Typography>
+        </Typography></div>
         <br />
         <DraggableTable
           rows={data}

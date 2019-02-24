@@ -29,7 +29,6 @@ export function jsUcfirst(string)
     return string.charAt(0).toUpperCase() + string.slice(1);
 }
 /*let arr = [jsUcfirst(html.name),html.url];
-                   console.log(createDataArr(arr));
-                   this.state.testers.push(createDataArr(arr));
-
-                   */
+  console.log(createDataArr(arr));
+  this.state.testers.push(createDataArr(arr));
+ */

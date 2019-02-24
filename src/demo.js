@@ -3,7 +3,6 @@ import { withStyles } from '@material-ui/core/styles';
 import CssBaseline from '@material-ui/core/CssBaseline';
 import Typography from '@material-ui/core/Typography';
 import HeaderSideBar from './sidebar.js';
-import API from './API.js';
 
 import FooterText from './footer-ext.js'; 
 import './App.css'
@@ -31,13 +30,7 @@ class FrontPage extends React.Component {
         <HeaderSideBar />
 
         <main className={classes.content}>]
-          <Typography paragraph>
-          <br></br>
-          <br></br>
-          <br></br>
-          </Typography>
 
-        <API />
         <Typography paragraph>
           <br></br>
           <br></br>

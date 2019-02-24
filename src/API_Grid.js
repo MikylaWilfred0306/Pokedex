@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import {jsUcfirst} from './usefulfunctions.js';
+import {jsUcfirst} from './Components/Functions/usefulfunctions';
 import { withStyles } from '@material-ui/core/styles';
 import TitlebarGridList from './gridtable.js';
 
@@ -31,7 +31,7 @@ class API extends Component {
     */
 
     componentDidMount() {
-        fetch('https://pokeapi.co/api/v2/pokemon?limit=100')
+        fetch('https://pokeapi.co/api/v2/pokemon?limit=10')
                 .then(results => {return results.json();}
                 )
                 .then(data => {
@@ -41,9 +41,11 @@ class API extends Component {
                     let img = {img: url};
                     let title = {title: jsUcfirst(html.name)};
                     let author = {author: 'Pokemon'};
+                    let url_name = {url: html.url};
                     Object.assign(obj, img);
                     Object.assign(obj, title);
                     Object.assign(obj, author);
+                    Object.assign(obj, url_name);
                    this.state.testers.push(obj);
 
                 })       

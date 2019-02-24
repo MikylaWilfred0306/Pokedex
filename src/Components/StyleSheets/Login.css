@@ -1,0 +1,64 @@
+/* #00a8f4 
+#646463 */
+
+body{
+    background-color: #006244;
+}
+
+.text{
+    color: #646463;
+}
+
+.center{
+    position: absolute;
+    height: 95%;
+    width: 95%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.card{
+    background-color:#fff;
+    border-radius: 15px;
+    padding: 0.8rem;
+}
+
+.card > form{
+    display: flex;
+    flex-direction: column;
+}
+
+.card h1{
+    text-align: center;
+    margin-top: 0;
+    margin-bottom: 10px;
+}
+
+.form-item{
+    padding: 5px;
+    margin-bottom: 2rem;
+    height: 30px;
+    width: 16rem;
+    border: 1px solid grey;
+    width: 95%;
+    border-radius: 8px;
+}
+
+
+.form-submit{
+    background-color: #006244;
+    border: none;
+    color: white;
+    padding: 10px 25px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    margin: 4px 2px;
+    cursor: pointer;
+    border-radius: 8px;
+  }
+  .form-submit:hover {
+    box-shadow: 0 5px 10px 0 rgba(0,0,0,0.24), 0 5px 10px 0 rgba(0,0,0,0.19);
+  }
