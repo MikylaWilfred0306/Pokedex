@@ -31,13 +31,24 @@ const contentStyle = {
     width: "90%"
   };
 
-function nameDisplay(arr){
+function nameDisplayReverse(arr){
     let j =  arr.length -1; 
     let i ='';
     for(j; j>=0 ;j--){
        i = i + (jsUcfirst(arr[j]) + ", ");
     }
-    return i.slice(0, -1);
+    return (i.substring(0, i.length - 2));
+
+}
+
+function nameDisplay(arr){
+  let j =  0; 
+  let i ='';
+  for(j; j < arr.length ;j++){
+     i = i + (jsUcfirst(arr[j]) + ", ");
+  }
+  return (i.substring(0, i.length - 2));
+
 }
 
 class CardContent extends React.Component {  
@@ -48,6 +59,8 @@ class CardContent extends React.Component {
             name: 'Loading', 
             picture: 'Loading', 
             types: [],
+            ability: [],
+            flavor_text_entries: "",
         };
     }
 
@@ -58,11 +71,35 @@ class CardContent extends React.Component {
                 )
                 .then(data => {
                 this.setState({ name: jsUcfirst(data.name)});
+
+                    fetch(data.species.url)
+                      .then(results => {return results.json();}
+                      )
+                      .then(dataThing => {
+                        let thisfLAG = true;
+                        dataThing.flavor_text_entries.map((html) => {
+                          if (html.language.name =="en" && thisfLAG){
+                            this.setState({ flavor_text_entries: html.flavor_text});
+                            thisfLAG = false;
+                          }
+                         })     
+
+
+                         
+                      })
+                    .catch(error => console.error(error));
+
+                
                 this.setState({ picture: 'https://img.pokemondb.net/artwork/' + data.name + '.jpg'})
                 data.types.map((html) => {
                     this.state.types.push(html.type.name);          
 
-                })       
+                })   
+                
+                data.abilities.map((html) => {
+                  this.state.ability.push(html.ability.name);          
+
+              })       
             })
         .catch(error => console.error(error));
     }    
@@ -84,16 +121,16 @@ class CardContent extends React.Component {
                     </a>
                     <div className="header"> 
                         <div className="leftheader">{this.state.name}</div>
-                        <div className="rightheader"> { nameDisplay(this.state.types)} </div> 
+                        <div className="rightheader"> { nameDisplayReverse(this.state.types)} </div> 
                         <br></br>
                      </div>
-                    
-
-                    
+                             
                     <div className="content">
                     {" "}
                     <img src={this.state.picture} className="centerImg" alt={this.state.name} />
-                    <br></br>
+                    <div className="desc"> <div className="padding"> {this.state.flavor_text_entries}</div> </div>
+                    <br />
+                    {nameDisplay(this.state.ability)}
                     Lorem ipsum dolor sit amet consectetur adipisicing elit. Atque, a
                     nostrum. Dolorem, repellat quidem ut, minima sint vel eveniet
                     quibusdam voluptates delectus doloremque, explicabo tempore dicta

@@ -46,7 +46,8 @@ card
   margin-right: auto;
   width: 50%;
   border-radius: 10px;
-  border: 8px solid rgb(232, 202, 52, .5);
+  border: 8px solid rgb(232, 202, 52, .75);
+  box-shadow: 5px 5px 25px grey;
 }
 .card > .header {
   border-bottom: 1px solid gray;
@@ -70,7 +71,7 @@ card
 .modal > .header {
   width: 100%;
   border-bottom: 1px solid gray;
-  font-size: 18px;
+  font-size: 30px;
   padding: 5px;
 }
 
@@ -81,10 +82,25 @@ card
   float: left;
 }
 
+.modal > .content > .desc {
+  background: rgb(232, 202, 52, .75);
+  border-radius: 50px / 15px;
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  width: 95%;
+  text-align: center;
+}
+
+.modal > .content > .desc > .padding {
+  padding: 10px 5px;
+  
+}
 
 .modal > .content {
   width: 100%;
   padding: 10px 5px;
+  font-size: 15px;
 }
 .modal > .actions {
   margin: auto;
