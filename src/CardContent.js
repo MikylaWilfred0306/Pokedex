@@ -130,7 +130,8 @@ class CardContent extends React.Component {
                     <img src={this.state.picture} className="centerImg" alt={this.state.name} />
                     <div className="desc"> <div className="padding"> {this.state.flavor_text_entries}</div> </div>
                     <br />
-                    {nameDisplay(this.state.ability)}
+                    Abilities: {nameDisplay(this.state.ability)}
+                    <br />
                     Lorem ipsum dolor sit amet consectetur adipisicing elit. Atque, a
                     nostrum. Dolorem, repellat quidem ut, minima sint vel eveniet
                     quibusdam voluptates delectus doloremque, explicabo tempore dicta
