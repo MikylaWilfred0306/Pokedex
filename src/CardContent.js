@@ -51,6 +51,8 @@ function nameDisplay(arr){
 
 }
 
+
+
 class CardContent extends React.Component {  
     constructor(props)
     {
@@ -60,10 +62,36 @@ class CardContent extends React.Component {
             picture: 'Loading', 
             types: [],
             ability: [],
-            flavor_text_entries: "",
+            url: [],
+            flavor_text_entries: [],
+            short: [],
         };
+        this.nameDisplaywithArr2asURLs = this.nameDisplaywithArr2asURLs.bind(this)
+        this.callAPI = this.callAPI.bind(this)
     }
 
+    callAPI(url){
+      fetch(url)
+      .then(results => {return results.json();}
+      )
+      .then(data => {
+              this.state.short.push(data.effect_entries[0].short_effect);     
+      })
+      .catch(error => console.error(error));
+    
+    }
+    
+    
+    nameDisplaywithArr2asURLs(arr, arr2){
+      let j =  0; 
+      let i ='';
+      for(j; j < arr.length ;j++){ 
+       // this.callAPI(arr2[j]);   
+        let thisvar = this.state.short[j];
+         i = i + (jsUcfirst(arr[j]) + " (" + thisvar + "), ");
+      }
+      return (i.substring(0, i.length - 2));
+    }
 
     componentDidMount() {
         fetch(this.props.apurl)
@@ -97,7 +125,8 @@ class CardContent extends React.Component {
                 })   
                 
                 data.abilities.map((html) => {
-                  this.state.ability.push(html.ability.name);          
+                  this.state.ability.push(html.ability.name);    
+                  this.callAPI(html.ability.url);          
 
               })       
             })
@@ -130,14 +159,12 @@ class CardContent extends React.Component {
                     <img src={this.state.picture} className="centerImg" alt={this.state.name} />
                     <div className="desc"> <div className="padding"> {this.state.flavor_text_entries}</div> </div>
                     <br />
-                    Abilities: {nameDisplay(this.state.ability)}
-                    <br />
+                    Abilities: {this.nameDisplaywithArr2asURLs(this.state.ability, this.state.url)}
+                    <br />  <br />
                     Lorem ipsum dolor sit amet consectetur adipisicing elit. Atque, a
                     nostrum. Dolorem, repellat quidem ut, minima sint vel eveniet
                     quibusdam voluptates delectus doloremque, explicabo tempore dicta
-                    adipisci fugit amet dignissimos?
-                    <br />
-                    {this.props.apurl}
+                    adipisci fugit amet dignissimo
                     </div>
                     <div className="actions">
                     <Popup
