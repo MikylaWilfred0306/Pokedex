@@ -1,0 +1,99 @@
+import React from "react";
+import PropTypes from 'prop-types';
+import Typography from '@material-ui/core/Typography';
+import DraggableTable from "./DraggableTable";
+import './StyleSheets/buyRatesLoader.css'
+import {isEmpty} from './Functions/usefulfunctions.js';
+
+let counter = 0;
+export function createDataArr(columns, arr) {
+    counter++;
+    let obj = {};
+    let id = {id: counter};
+    Object.assign(obj, id);
+    let i = 0;
+    for(i; i < arr.length; i++){
+        var key = columns[i];
+        var temp= {};
+        temp[key] = arr[i];
+        Object.assign(obj, temp);
+    }
+    return obj;
+}
+
+const getColumnWidth = (rows, accessor, headerText) => {
+  const maxWidth = 400
+  const magicSpacing = 10
+  const cellLength = Math.max(
+    ...rows.map(row => (`${row[accessor]}` || '').length),
+    headerText.length,
+  )
+  return Math.min(maxWidth, cellLength * magicSpacing)
+}
+
+class EnhancedTableHead extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      data:   this.props.data 
+  }
+  this.columndata = this.columndata.bind(this);
+}
+
+
+columndata(){
+  let columns = [];
+  let i = 0;
+  for(i; i < this.props.columns.length; i++){
+    let displayColumns;
+    if (isEmpty(this.props.displayColumns)){
+      displayColumns = this.props.columns[i];
+    } else{
+      displayColumns = this.props.displayColumns[i];
+    }
+     columns.push({
+          Header: displayColumns,
+          accessor: this.props.columns[i],
+          width: getColumnWidth(this.props.data, this.props.columns[i], displayColumns)
+      });
+  };
+  return columns;
+}
+
+render(){
+    const { data } = this.state;
+    let fieldMap = this.props.columns;
+
+    let heads = this.props.columns;
+    let columns = this.columndata();
+    
+    return (
+      <div>
+        <div class="outer"><Typography paragraph>
+          Tip: Hold shift when sorting to multi-sort!
+        </Typography></div>
+        <br />
+        <DraggableTable
+          rows={data}
+          columns={columns}
+          defaultPageSize={this.props.defaultPageSize}
+          className="-striped -highlight"
+        />
+        
+      </div>
+    );
+  }
+}
+
+EnhancedTableHead.propTypes = {
+  data: PropTypes.object.isRequired,
+  columns: PropTypes.object.isRequired,
+  defaultPageSize: PropTypes.number,
+  displayColumns: PropTypes.object
+}
+
+EnhancedTableHead.defaultProps = {
+  defaultPageSize: 5,
+  displayColumns: []
+}
+export default EnhancedTableHead;
