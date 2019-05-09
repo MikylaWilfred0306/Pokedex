@@ -6,7 +6,10 @@ import InfoIcon from '@material-ui/icons/Info';
 import Popup from "reactjs-popup";
 import {jsUcfirst} from './Components/Functions/usefulfunctions';
 import './Components/StyleSheets/popup.css'
+import CustomizedExpansionPanel from './Components/expansionpanel'
+import CustomPaginationActionsTable from './Components/CustomPaginationActionsTable'
 
+import SVGIcon from "./Components/icon"; 
 
 const styles = theme => ({
   root: {
@@ -139,7 +142,7 @@ class CardContent extends React.Component {
             return (   
                 <div className="example-warper">
                 <Popup
-                  trigger={<IconButton className={classes.icon}> <InfoIcon /> </IconButton>}
+                  trigger={<IconButton className={classes.icon}>  <SVGIcon name="ball" width={35} fill="white"/> </IconButton>}
                   modal
                   contentStyle={contentStyle}
                 >
@@ -160,42 +163,11 @@ class CardContent extends React.Component {
                     <div className="desc"> <div className="padding"> {this.state.flavor_text_entries}</div> </div>
                     <br />
                     Abilities: {this.nameDisplaywithArr2asURLs(this.state.ability, this.state.url)}
-                    <br />  <br />
-                    Lorem ipsum dolor sit amet consectetur adipisicing elit. Atque, a
-                    nostrum. Dolorem, repellat quidem ut, minima sint vel eveniet
-                    quibusdam voluptates delectus doloremque, explicabo tempore dicta
-                    adipisci fugit amet dignissimo
+                    <br /> <CustomPaginationActionsTable>s</CustomPaginationActionsTable> 
                     </div>
                     <div className="actions">
-                    <Popup
-                        trigger={<button className="button"> Menu Demo </button>}
-                        position="top center"
-                        closeOnDocumentClick
-                        contentStyle={{ padding: "0px", border: "none" }}
-                    >
-                        <div className="menu">
-                        <div className="menu-item"> Menu item 1</div>
-                        <div className="menu-item"> Menu item 2</div>
-                        <div className="menu-item"> Menu item 3</div>
-                        <Popup
-                            trigger={<div className="menu-item"> sup Menu </div>}
-                            position="right top"
-                            on="hover"
-                            closeOnDocumentClick
-                            mouseLeaveDelay={300}
-                            mouseEnterDelay={0}
-                            contentStyle={{ padding: "0px", border: "none" }}
-                            arrow={false}
-                        >
-                            <div className="menu">
-                            <div className="menu-item"> item 1</div>
-                            <div className="menu-item"> item 2</div>
-                            <div className="menu-item"> item 3</div>
-                            </div>
-                        </Popup>
-                        <div className="menu-item"> Menu item 4</div>
-                        </div>
-                    </Popup>
+                   
+                           
                     <button
                         className="button"
                         onClick={() => {
