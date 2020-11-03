@@ -6,7 +6,7 @@ import HeaderSideBar from './sidebar.js';
 
 import FooterText from './footer-ext.js'; 
 import './App.css'
-import API_Grid from './API_Grid.js';
+import APIGrid from './API_Grid.js';
 //https://img.pokemondb.net/artwork/bulbasaur.jpg
 
 const styles = theme => ({
@@ -36,7 +36,7 @@ class FrontPage extends React.Component {
           <br></br>
           <br></br>
           </Typography>
-        <API_Grid />
+        <APIGrid />
         <FooterText/>
         </main>
       </div>

@@ -35,7 +35,7 @@ class API extends Component {
                 .then(results => {return results.json();}
                 )
                 .then(data => {
-                data.results.map((html) => {
+                data.results.foreach((html) => {
                     let obj = {}; 
                     let url = 'https://img.pokemondb.net/artwork/' + html.name + '.jpg';
                     let img = {img: url};
@@ -46,10 +46,9 @@ class API extends Component {
                     Object.assign(obj, title);
                     Object.assign(obj, author);
                     Object.assign(obj, url_name);
-                   this.state.testers.push(obj);
-
+                    this.state.testers.push(obj);
                 })       
-            this.setState({ loading: false})
+                this.setState({ loading: false})
             })
         .catch(error => console.error(error));
     }

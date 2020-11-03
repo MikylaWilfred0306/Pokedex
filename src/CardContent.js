@@ -26,7 +26,6 @@ const styles = theme => ({
   icon: {
     color: 'rgba(255, 255, 255, 0.54)',
   },
-
 });
 
 const contentStyle = {
@@ -41,7 +40,6 @@ function nameDisplayReverse(arr){
        i = i + (jsUcfirst(arr[j]) + ", ");
     }
     return (i.substring(0, i.length - 2));
-
 }
 
 function nameDisplay(arr){
@@ -51,10 +49,7 @@ function nameDisplay(arr){
      i = i + (jsUcfirst(arr[j]) + ", ");
   }
   return (i.substring(0, i.length - 2));
-
 }
-
-
 
 class CardContent extends React.Component {  
     constructor(props)
@@ -81,9 +76,7 @@ class CardContent extends React.Component {
               this.state.short.push(data.effect_entries[0].short_effect);     
       })
       .catch(error => console.error(error));
-    
-    }
-    
+    }    
     
     nameDisplaywithArr2asURLs(arr, arr2){
       let j =  0; 
@@ -108,36 +101,29 @@ class CardContent extends React.Component {
                       )
                       .then(dataThing => {
                         let thisfLAG = true;
-                        dataThing.flavor_text_entries.map((html) => {
-                          if (html.language.name =="en" && thisfLAG){
+                        dataThing.flavor_text_entries.foreach((html) => {
+                          if (html.language.name === "en" && thisfLAG){
                             this.setState({ flavor_text_entries: html.flavor_text});
                             thisfLAG = false;
                           }
-                         })     
-
-
-                         
+                         })    
                       })
                     .catch(error => console.error(error));
-
                 
                 this.setState({ picture: 'https://img.pokemondb.net/artwork/' + data.name + '.jpg'})
-                data.types.map((html) => {
-                    this.state.types.push(html.type.name);          
-
+                data.types.foreach((html) => {
+                    this.state.types.push(html.type.name);      
                 })   
                 
-                data.abilities.map((html) => {
+                data.abilities.foreach((html) => {
                   this.state.ability.push(html.ability.name);    
-                  this.callAPI(html.ability.url);          
-
+                  this.callAPI(html.ability.url);    
               })       
             })
         .catch(error => console.error(error));
     }    
     
-
-    render (){            
+    render = () => {            
           const { classes } = this.props;
             return (   
                 <div className="example-warper">
@@ -185,8 +171,6 @@ class CardContent extends React.Component {
         );
   }
 }
-
-
 
 CardContent.propTypes = {
     apurl: PropTypes.string.isRequired,

@@ -7,8 +7,6 @@ import GridListTileBar from '@material-ui/core/GridListTileBar';
 import './Components/StyleSheets/popup.css'
 import CardContent from './CardContent'
 
-
-
 const styles = theme => ({
   root: {
     display: 'flex',
@@ -41,7 +39,7 @@ class TitlebarGridList extends React.Component {
     }
     
     render(){
-        this.state.tileData = this.props.dataArr;    
+        this.setState({tileData: this.props.dataArr});    
         const { classes } = this.props;
         return (
             <div className={classes.root}>
